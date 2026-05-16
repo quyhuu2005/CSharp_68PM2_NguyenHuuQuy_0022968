@@ -33,59 +33,81 @@
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.SuspendLayout();
-
+            // 
+            // labelTitle
+            // 
             this.labelTitle.AutoSize = true;
             this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.labelTitle.Location = new System.Drawing.Point(100, 20);
+            this.labelTitle.Location = new System.Drawing.Point(133, 25);
+            this.labelTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(300, 31);
+            this.labelTitle.Size = new System.Drawing.Size(295, 39);
             this.labelTitle.TabIndex = 5;
             this.labelTitle.Text = "Quản lý sinh viên";
             this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
+            // 
+            // labelEmail
+            // 
             this.labelEmail.AutoSize = true;
-            this.labelEmail.Location = new System.Drawing.Point(50, 100);
+            this.labelEmail.Location = new System.Drawing.Point(67, 123);
+            this.labelEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelEmail.Name = "labelEmail";
-            this.labelEmail.Size = new System.Drawing.Size(35, 13);
+            this.labelEmail.Size = new System.Drawing.Size(44, 16);
             this.labelEmail.TabIndex = 0;
             this.labelEmail.Text = "Email:";
-
-            this.textBoxEmail.Location = new System.Drawing.Point(150, 97);
+            this.labelEmail.Click += new System.EventHandler(this.labelEmail_Click);
+            // 
+            // textBoxEmail
+            // 
+            this.textBoxEmail.Location = new System.Drawing.Point(200, 119);
+            this.textBoxEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(250, 20);
+            this.textBoxEmail.Size = new System.Drawing.Size(332, 22);
             this.textBoxEmail.TabIndex = 1;
-
+            // 
+            // labelPassword
+            // 
             this.labelPassword.AutoSize = true;
-            this.labelPassword.Location = new System.Drawing.Point(50, 150);
+            this.labelPassword.Location = new System.Drawing.Point(67, 185);
+            this.labelPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(55, 13);
+            this.labelPassword.Size = new System.Drawing.Size(64, 16);
             this.labelPassword.TabIndex = 2;
             this.labelPassword.Text = "Mật khẩu:";
             this.labelPassword.Click += new System.EventHandler(this.labelPassword_Click);
-
-            this.textBoxPassword.Location = new System.Drawing.Point(150, 147);
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Location = new System.Drawing.Point(200, 181);
+            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
-            this.textBoxPassword.Size = new System.Drawing.Size(250, 20);
+            this.textBoxPassword.Size = new System.Drawing.Size(332, 22);
             this.textBoxPassword.TabIndex = 3;
-
-            this.buttonLogin.Location = new System.Drawing.Point(150, 200);
+            // 
+            // buttonLogin
+            // 
+            this.buttonLogin.Location = new System.Drawing.Point(200, 246);
+            this.buttonLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(100, 30);
+            this.buttonLogin.Size = new System.Drawing.Size(133, 37);
             this.buttonLogin.TabIndex = 4;
             this.buttonLogin.Text = "Đăng nhập";
             this.buttonLogin.UseVisualStyleBackColor = true;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
-
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 300);
+            this.ClientSize = new System.Drawing.Size(667, 369);
             this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.labelEmail);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Đăng nhập";
             this.ResumeLayout(false);

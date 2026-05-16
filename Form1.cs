@@ -31,9 +31,14 @@ namespace QuanLySinhVien
             if (email == "quyhuu1572005@gmail.com" && password == "0022968")
             {
                 MessageBox.Show("Đăng nhập thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-           
+
                 textBoxEmail.Clear();
                 textBoxPassword.Clear();
+
+                // Open the QuanLyForm
+                QuanLyForm mainForm = new QuanLyForm();
+                mainForm.Show();
+                this.Hide();
             }
             else
             {
@@ -42,6 +47,11 @@ namespace QuanLySinhVien
         }
 
         private void labelPassword_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelEmail_Click(object sender, EventArgs e)
         {
 
         }

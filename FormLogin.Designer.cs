@@ -1,6 +1,6 @@
 ﻿namespace QuanLySinhVien
 {
-    partial class Form1
+    partial class FormLogin
     {
 
         private System.ComponentModel.IContainer components = null;

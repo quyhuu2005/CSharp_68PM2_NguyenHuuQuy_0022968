@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanLySinhVien
 {
-    public partial class Form1 : Form
+    public partial class FormLogin : Form
     {
-        public Form1()
+        public FormLogin()
         {
             InitializeComponent();
         }
@@ -35,8 +35,8 @@ namespace QuanLySinhVien
                 textBoxEmail.Clear();
                 textBoxPassword.Clear();
 
-                // Open the QuanLyForm
-                QuanLyForm mainForm = new QuanLyForm();
+                FormMain mainForm = new FormMain();
+                mainForm.FormClosed += (formSender, formArgs) => this.Close();
                 mainForm.Show();
                 this.Hide();
             }

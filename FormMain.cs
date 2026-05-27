@@ -14,6 +14,8 @@ namespace QuanLySinhVien
             InitializeComponent();
             ucSinhVien = new uc_QLSV();
             ucLopHoc = new uc_QLLH();
+            ShowControl(ucSinhVien, btnQuanLySinhVien.Text);
+            SetActiveButton(btnQuanLySinhVien);
         }
 
         private void btnQuanLySinhVien_Click(object sender, EventArgs e)

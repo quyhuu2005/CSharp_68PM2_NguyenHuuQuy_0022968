@@ -32,11 +32,12 @@ namespace QuanLySinhVien
         private System.Windows.Forms.Label lblTimSV;
         private System.Windows.Forms.TextBox txtTimSV;
         private System.Windows.Forms.Button btnTimSV;
-        private System.Windows.Forms.DataGridView dataGridViewSinhVien;
+        private System.Windows.Forms.DataGridView dgv_qlsv;
         private System.Windows.Forms.Label lblStudentPage;
 
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblMaSinhVien = new System.Windows.Forms.Label();
             this.txtMaSinhVien = new System.Windows.Forms.TextBox();
             this.lblHoTen = new System.Windows.Forms.Label();
@@ -54,12 +55,7 @@ namespace QuanLySinhVien
             this.lblTimSV = new System.Windows.Forms.Label();
             this.txtTimSV = new System.Windows.Forms.TextBox();
             this.btnTimSV = new System.Windows.Forms.Button();
-            this.dataGridViewSinhVien = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_qlsv = new System.Windows.Forms.DataGridView();
             this.lblStudentPage = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -67,8 +63,15 @@ namespace QuanLySinhVien
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSinhVien)).BeginInit();
+            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.maSVDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hoTenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gioiTinhDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngaySinhDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lopDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_qlsv)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // lblMaSinhVien
@@ -183,6 +186,7 @@ namespace QuanLySinhVien
             this.btnThemSV.TabIndex = 10;
             this.btnThemSV.Text = "Thêm";
             this.btnThemSV.UseVisualStyleBackColor = false;
+            this.btnThemSV.Click += new System.EventHandler(this.btnThemSV_Click);
             // 
             // btnSuaSV
             // 
@@ -195,6 +199,7 @@ namespace QuanLySinhVien
             this.btnSuaSV.TabIndex = 11;
             this.btnSuaSV.Text = "Sửa";
             this.btnSuaSV.UseVisualStyleBackColor = false;
+            this.btnSuaSV.Enabled = false;
             // 
             // btnXoaSV
             // 
@@ -207,6 +212,7 @@ namespace QuanLySinhVien
             this.btnXoaSV.TabIndex = 12;
             this.btnXoaSV.Text = "Xóa";
             this.btnXoaSV.UseVisualStyleBackColor = false;
+            this.btnXoaSV.Enabled = false;
             // 
             // btnLamMoiSV
             // 
@@ -219,6 +225,7 @@ namespace QuanLySinhVien
             this.btnLamMoiSV.TabIndex = 13;
             this.btnLamMoiSV.Text = "Làm mới";
             this.btnLamMoiSV.UseVisualStyleBackColor = false;
+            this.btnLamMoiSV.Enabled = false;
             // 
             // lblTimSV
             // 
@@ -237,7 +244,7 @@ namespace QuanLySinhVien
             this.txtTimSV.Location = new System.Drawing.Point(309, 72);
             this.txtTimSV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTimSV.Name = "txtTimSV";
-            this.txtTimSV.Size = new System.Drawing.Size(296, 20);
+            this.txtTimSV.Size = new System.Drawing.Size(502, 20);
             this.txtTimSV.TabIndex = 15;
             // 
             // btnTimSV
@@ -245,65 +252,38 @@ namespace QuanLySinhVien
             this.btnTimSV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTimSV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.btnTimSV.ForeColor = System.Drawing.Color.White;
-            this.btnTimSV.Location = new System.Drawing.Point(610, 68);
+            this.btnTimSV.Location = new System.Drawing.Point(816, 68);
             this.btnTimSV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnTimSV.Name = "btnTimSV";
             this.btnTimSV.Size = new System.Drawing.Size(105, 31);
             this.btnTimSV.TabIndex = 16;
             this.btnTimSV.Text = "Tìm";
             this.btnTimSV.UseVisualStyleBackColor = false;
+            this.btnTimSV.Click += new System.EventHandler(this.btnTimSV_Click);
             // 
-            // dataGridViewSinhVien
+            // dgv_qlsv
             // 
-            this.dataGridViewSinhVien.AllowUserToAddRows = false;
-            this.dataGridViewSinhVien.AllowUserToDeleteRows = false;
-            this.dataGridViewSinhVien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewSinhVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSinhVien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5});
-            this.dataGridViewSinhVien.Location = new System.Drawing.Point(309, 121);
-            this.dataGridViewSinhVien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dataGridViewSinhVien.MultiSelect = false;
-            this.dataGridViewSinhVien.Name = "dataGridViewSinhVien";
-            this.dataGridViewSinhVien.ReadOnly = true;
-            this.dataGridViewSinhVien.RowHeadersWidth = 51;
-            this.dataGridViewSinhVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSinhVien.Size = new System.Drawing.Size(519, 328);
-            this.dataGridViewSinhVien.TabIndex = 17;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Mã SV";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Họ và Tên";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Giới Tính";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Ngày Sinh";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Lớp";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dgv_qlsv.AllowUserToAddRows = false;
+            this.dgv_qlsv.AllowUserToDeleteRows = false;
+            this.dgv_qlsv.AutoGenerateColumns = false;
+            this.dgv_qlsv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_qlsv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_qlsv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.maSVDataGridViewTextBoxColumn,
+            this.hoTenDataGridViewTextBoxColumn,
+            this.gioiTinhDataGridViewTextBoxColumn,
+            this.ngaySinhDataGridViewTextBoxColumn,
+            this.lopDataGridViewTextBoxColumn});
+            this.dgv_qlsv.DataSource = this.bindingSource2;
+            this.dgv_qlsv.Location = new System.Drawing.Point(309, 121);
+            this.dgv_qlsv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgv_qlsv.MultiSelect = false;
+            this.dgv_qlsv.Name = "dgv_qlsv";
+            this.dgv_qlsv.ReadOnly = true;
+            this.dgv_qlsv.RowHeadersWidth = 51;
+            this.dgv_qlsv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_qlsv.Size = new System.Drawing.Size(616, 328);
+            this.dgv_qlsv.TabIndex = 17;
             // 
             // lblStudentPage
             // 
@@ -376,6 +356,41 @@ namespace QuanLySinhVien
             this.button4.Text = ">>";
             this.button4.UseVisualStyleBackColor = true;
             // 
+            // maSVDataGridViewTextBoxColumn
+            // 
+            this.maSVDataGridViewTextBoxColumn.DataPropertyName = "MaSV";
+            this.maSVDataGridViewTextBoxColumn.HeaderText = "MaSV";
+            this.maSVDataGridViewTextBoxColumn.Name = "maSVDataGridViewTextBoxColumn";
+            this.maSVDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // hoTenDataGridViewTextBoxColumn
+            // 
+            this.hoTenDataGridViewTextBoxColumn.DataPropertyName = "HoTen";
+            this.hoTenDataGridViewTextBoxColumn.HeaderText = "HoTen";
+            this.hoTenDataGridViewTextBoxColumn.Name = "hoTenDataGridViewTextBoxColumn";
+            this.hoTenDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // gioiTinhDataGridViewTextBoxColumn
+            // 
+            this.gioiTinhDataGridViewTextBoxColumn.DataPropertyName = "GioiTinh";
+            this.gioiTinhDataGridViewTextBoxColumn.HeaderText = "GioiTinh";
+            this.gioiTinhDataGridViewTextBoxColumn.Name = "gioiTinhDataGridViewTextBoxColumn";
+            this.gioiTinhDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ngaySinhDataGridViewTextBoxColumn
+            // 
+            this.ngaySinhDataGridViewTextBoxColumn.DataPropertyName = "NgaySinh";
+            this.ngaySinhDataGridViewTextBoxColumn.HeaderText = "NgaySinh";
+            this.ngaySinhDataGridViewTextBoxColumn.Name = "ngaySinhDataGridViewTextBoxColumn";
+            this.ngaySinhDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lopDataGridViewTextBoxColumn
+            // 
+            this.lopDataGridViewTextBoxColumn.DataPropertyName = "Lop";
+            this.lopDataGridViewTextBoxColumn.HeaderText = "Lop";
+            this.lopDataGridViewTextBoxColumn.Name = "lopDataGridViewTextBoxColumn";
+            this.lopDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // uc_QLSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -389,7 +404,7 @@ namespace QuanLySinhVien
             this.Controls.Add(this.lblTimSV);
             this.Controls.Add(this.txtTimSV);
             this.Controls.Add(this.btnTimSV);
-            this.Controls.Add(this.dataGridViewSinhVien);
+            this.Controls.Add(this.dgv_qlsv);
             this.Controls.Add(this.lblStudentPage);
             this.Controls.Add(this.btnXoaSV);
             this.Controls.Add(this.btnLamMoiSV);
@@ -397,27 +412,29 @@ namespace QuanLySinhVien
             this.Controls.Add(this.btnThemSV);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "uc_QLSV";
-            this.Size = new System.Drawing.Size(848, 618);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSinhVien)).EndInit();
+            this.Size = new System.Drawing.Size(1054, 618);
+            this.Load += new System.EventHandler(this.uc_QLSV_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_qlsv)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.BindingSource bindingSource2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maSVDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hoTenDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gioiTinhDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngaySinhDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lopDataGridViewTextBoxColumn;
     }
-}
+        }

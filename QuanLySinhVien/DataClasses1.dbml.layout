@@ -2,11 +2,24 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataClasses1">
   <DataContextMoniker Name="/DataClasses1DataContext" />
   <nestedChildShapes>
-    <classShape Id="0b2b0ca2-7bd2-4ab7-8faa-0b3e1cdd4143" absoluteBounds="1.125, 0.875, 2, 1.7708968098958331">
-      <DataClassMoniker Name="/DataClasses1DataContext/QuanLySinhVien" />
+    <classShape Id="ddc2d0fd-7e2d-4e86-8e99-ee9872bfaed5" absoluteBounds="3.5, 0.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/DataClasses1DataContext/SinhVien" />
       <nestedChildShapes>
-        <elementListCompartment Id="f32460ae-9958-4d2b-ba81-34085bf6f514" absoluteBounds="1.1399999999999997, 1.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="266daea1-cded-42d2-866a-1e4c35fd4d62" absoluteBounds="3.515, 1.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="d9714940-530c-4029-b5a6-c6c915efdf50" absoluteBounds="0.75, 0.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/DataClasses1DataContext/LopHoc" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6e7e81bf-e389-4cc4-8626-775bf3022509" absoluteBounds="0.765, 1.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.76044840494792); (3.5 : 1.76044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/LopHoc/LopHoc_SinhVien" />
+      <nodes>
+        <classShapeMoniker Id="d9714940-530c-4029-b5a6-c6c915efdf50" />
+        <classShapeMoniker Id="ddc2d0fd-7e2d-4e86-8e99-ee9872bfaed5" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

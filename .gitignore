@@ -1,0 +1,17 @@
+# Visual Studio cache/options directory
+.vs/
+
+# Build outputs
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+
+# NuGet packages restored locally
+packages/
+
+# User-specific files
+*.suo
+*.user
+*.rsuser
+*.sln.docstates

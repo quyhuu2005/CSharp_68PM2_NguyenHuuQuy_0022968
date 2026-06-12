@@ -7,11 +7,12 @@ namespace QuanLySinhVien
 {
     public partial class uc_QLSV : UserControl
     {
-        private List<QuanLySinhVien> danhSachSinhVien = new List<QuanLySinhVien>();
+        private List<SinhVien> danhSachSinhVien = new List<SinhVien>();
 
         public uc_QLSV()
         {
             InitializeComponent();
+            CauHinhBangSinhVien();
         }
 
         private DataClasses1DataContext TaoKetNoi()
@@ -21,8 +22,75 @@ namespace QuanLySinhVien
 
         private void uc_QLSV_Load(object sender, EventArgs e)
         {
+            LoadDanhSachLop();
             LoadDanhSachSinhVien();
             XoaTrangForm();
+        }
+
+        private void CauHinhBangSinhVien()
+        {
+            dgv_qlsv.AutoGenerateColumns = false;
+            dgv_qlsv.Columns.Clear();
+            maSVDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "MaSV",
+                HeaderText = "Ma SV",
+                Name = "colMaSV"
+            };
+            hoTenDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "HoTen",
+                HeaderText = "Ho ten",
+                Name = "colHoTen"
+            };
+            gioiTinhDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "GioiTinh",
+                HeaderText = "Gioi tinh",
+                Name = "colGioiTinh"
+            };
+            ngaySinhDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "NgaySinh",
+                HeaderText = "Ngay sinh",
+                Name = "colNgaySinh",
+                DefaultCellStyle = { Format = "dd/MM/yyyy" }
+            };
+            lopDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Lop",
+                HeaderText = "Lop",
+                Name = "colLop"
+            };
+            dgv_qlsv.Columns.AddRange(new DataGridViewColumn[]
+            {
+                maSVDataGridViewTextBoxColumn,
+                hoTenDataGridViewTextBoxColumn,
+                gioiTinhDataGridViewTextBoxColumn,
+                ngaySinhDataGridViewTextBoxColumn,
+                lopDataGridViewTextBoxColumn
+            });
+        }
+
+        private void LoadDanhSachLop()
+        {
+            try
+            {
+                using (DataClasses1DataContext db = TaoKetNoi())
+                {
+                    List<string> danhSachLop = db.LopHocs
+                        .OrderBy(lh => lh.MaLop)
+                        .Select(lh => lh.MaLop)
+                        .ToList();
+
+                    cmbLop.DataSource = danhSachLop;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi tai du lieu lop: " + ex.Message, "Loi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cmbLop.DataSource = null;
+            }
         }
 
         private void LoadDanhSachSinhVien()
@@ -31,7 +99,7 @@ namespace QuanLySinhVien
             {
                 using (DataClasses1DataContext db = TaoKetNoi())
                 {
-                    danhSachSinhVien = db.QuanLySinhViens
+                    danhSachSinhVien = db.SinhViens
                         .OrderBy(sv => sv.MaSV)
                         .ToList();
                 }
@@ -41,15 +109,14 @@ namespace QuanLySinhVien
             catch (Exception ex)
             {
                 MessageBox.Show("Loi tai du lieu: " + ex.Message, "Loi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                BindDanhSach(new List<QuanLySinhVien>());
+                BindDanhSach(new List<SinhVien>());
             }
         }
 
-        private void BindDanhSach(List<QuanLySinhVien> danhSach)
+        private void BindDanhSach(List<SinhVien> danhSach)
         {
             bindingSource2.DataMember = string.Empty;
             bindingSource2.DataSource = danhSach;
-            dgv_qlsv.AutoGenerateColumns = false;
             dgv_qlsv.DataSource = bindingSource2;
             lblStudentPage.Text = $"Trang 1/1 | {bindingSource2.Count} ban ghi";
         }
@@ -88,9 +155,9 @@ namespace QuanLySinhVien
             return true;
         }
 
-        private QuanLySinhVien LaySinhVienTuForm()
+        private SinhVien LaySinhVienTuForm()
         {
-            return new QuanLySinhVien
+            return new SinhVien
             {
                 MaSV = txtMaSinhVien.Text.Trim(),
                 HoTen = txtHoTen.Text.Trim(),
@@ -129,13 +196,13 @@ namespace QuanLySinhVien
                 return;
             }
 
-            QuanLySinhVien sinhVien = LaySinhVienTuForm();
+            SinhVien sinhVien = LaySinhVienTuForm();
 
             try
             {
                 using (DataClasses1DataContext db = TaoKetNoi())
                 {
-                    bool daTonTai = db.QuanLySinhViens.Any(sv => sv.MaSV == sinhVien.MaSV);
+                    bool daTonTai = db.SinhViens.Any(sv => sv.MaSV == sinhVien.MaSV);
                     if (daTonTai)
                     {
                         MessageBox.Show("Ma sinh vien da ton tai.", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -143,7 +210,7 @@ namespace QuanLySinhVien
                         return;
                     }
 
-                    db.QuanLySinhViens.InsertOnSubmit(sinhVien);
+                    db.SinhViens.InsertOnSubmit(sinhVien);
                     db.SubmitChanges();
                 }
 
@@ -169,7 +236,7 @@ namespace QuanLySinhVien
             {
                 using (DataClasses1DataContext db = TaoKetNoi())
                 {
-                    List<QuanLySinhVien> ketQua = db.QuanLySinhViens
+                    List<SinhVien> ketQua = db.SinhViens
                         .Where(sv =>
                             sv.MaSV.Contains(tuKhoa) ||
                             sv.HoTen.Contains(tuKhoa) ||
@@ -186,5 +253,9 @@ namespace QuanLySinhVien
             }
         }
 
+        private void dgv_qlsv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

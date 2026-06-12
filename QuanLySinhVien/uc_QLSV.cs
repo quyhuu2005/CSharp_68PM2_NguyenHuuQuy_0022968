@@ -13,6 +13,7 @@ namespace QuanLySinhVien
         {
             InitializeComponent();
             CauHinhBangSinhVien();
+            dgv_qlsv.CellClick += dgv_qlsv_CellClick;
         }
 
         private DataClasses1DataContext TaoKetNoi()
@@ -251,6 +252,37 @@ namespace QuanLySinhVien
             {
                 MessageBox.Show("Loi tim kiem sinh vien: " + ex.Message, "Loi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void HienThiSinhVienLenForm(SinhVien sinhVien)
+        {
+            if (sinhVien == null)
+            {
+                return;
+            }
+
+            txtMaSinhVien.Text = sinhVien.MaSV;
+            txtHoTen.Text = sinhVien.HoTen;
+            ChonGiaTriComboBox(cmbGioiTinh, sinhVien.GioiTinh);
+            ChonGiaTriComboBox(cmbLop, sinhVien.Lop);
+            dtpNgaySinh.Value = sinhVien.NgaySinh ?? DateTime.Today;
+        }
+
+        private void ChonGiaTriComboBox(ComboBox comboBox, string giaTri)
+        {
+            int viTri = comboBox.FindStringExact(giaTri ?? string.Empty);
+            comboBox.SelectedIndex = viTri;
+        }
+
+        private void dgv_qlsv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+            {
+                return;
+            }
+
+            SinhVien sinhVien = dgv_qlsv.Rows[e.RowIndex].DataBoundItem as SinhVien;
+            HienThiSinhVienLenForm(sinhVien);
         }
 
         private void dgv_qlsv_CellContentClick(object sender, DataGridViewCellEventArgs e)

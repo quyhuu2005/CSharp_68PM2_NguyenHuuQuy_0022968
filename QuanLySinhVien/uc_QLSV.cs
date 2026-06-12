@@ -8,12 +8,14 @@ namespace QuanLySinhVien
     public partial class uc_QLSV : UserControl
     {
         private List<SinhVien> danhSachSinhVien = new List<SinhVien>();
+        private string maSinhVienDangChon;
 
         public uc_QLSV()
         {
             InitializeComponent();
             CauHinhBangSinhVien();
             dgv_qlsv.CellClick += dgv_qlsv_CellClick;
+            btnSuaSV.Click += btnSuaSV_Click;
         }
 
         private DataClasses1DataContext TaoKetNoi()
@@ -186,6 +188,8 @@ namespace QuanLySinhVien
 
             dtpNgaySinh.Value = DateTime.Today;
             txtMaSinhVien.Enabled = true;
+            btnSuaSV.Enabled = false;
+            maSinhVienDangChon = null;
             txtMaSinhVien.Focus();
             dgv_qlsv.ClearSelection();
         }
@@ -254,6 +258,49 @@ namespace QuanLySinhVien
             }
         }
 
+        private void btnSuaSV_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(maSinhVienDangChon))
+            {
+                MessageBox.Show("Vui long chon sinh vien can sua.", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!KiemTraDuLieuNhap())
+            {
+                return;
+            }
+
+            try
+            {
+                using (DataClasses1DataContext db = TaoKetNoi())
+                {
+                    SinhVien sinhVien = db.SinhViens.SingleOrDefault(sv => sv.MaSV == maSinhVienDangChon);
+                    if (sinhVien == null)
+                    {
+                        MessageBox.Show("Khong tim thay sinh vien can sua.", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        LoadDanhSachSinhVien();
+                        XoaTrangForm();
+                        return;
+                    }
+
+                    sinhVien.HoTen = txtHoTen.Text.Trim();
+                    sinhVien.GioiTinh = cmbGioiTinh.Text;
+                    sinhVien.NgaySinh = dtpNgaySinh.Value.Date;
+                    sinhVien.Lop = cmbLop.Text;
+                    db.SubmitChanges();
+                }
+
+                LoadDanhSachSinhVien();
+                XoaTrangForm();
+                MessageBox.Show("Sua sinh vien thanh cong.", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi sua sinh vien: " + ex.Message, "Loi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void HienThiSinhVienLenForm(SinhVien sinhVien)
         {
             if (sinhVien == null)
@@ -261,11 +308,14 @@ namespace QuanLySinhVien
                 return;
             }
 
+            maSinhVienDangChon = sinhVien.MaSV;
             txtMaSinhVien.Text = sinhVien.MaSV;
             txtHoTen.Text = sinhVien.HoTen;
             ChonGiaTriComboBox(cmbGioiTinh, sinhVien.GioiTinh);
             ChonGiaTriComboBox(cmbLop, sinhVien.Lop);
             dtpNgaySinh.Value = sinhVien.NgaySinh ?? DateTime.Today;
+            txtMaSinhVien.Enabled = false;
+            btnSuaSV.Enabled = true;
         }
 
         private void ChonGiaTriComboBox(ComboBox comboBox, string giaTri)

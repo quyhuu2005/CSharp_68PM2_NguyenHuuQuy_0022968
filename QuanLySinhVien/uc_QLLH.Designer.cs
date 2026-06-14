@@ -14,6 +14,21 @@ namespace QuanLySinhVien
         }
 
         #region Component Designer generated code
+
+        private System.Windows.Forms.Label lblMaID;
+        private System.Windows.Forms.TextBox txtMaID;
+        private System.Windows.Forms.Label lblMaLop;
+        private System.Windows.Forms.TextBox txtMaLop;
+        private System.Windows.Forms.Label lblTenLop;
+        private System.Windows.Forms.TextBox txtTenLop;
+        private System.Windows.Forms.Label lblGiaoVien;
+        private System.Windows.Forms.TextBox txtGiaoVien;
+        private System.Windows.Forms.Label lblGhiChu;
+        private System.Windows.Forms.TextBox txtGhiChu;
+        private System.Windows.Forms.Button btnThemLop;
+        private System.Windows.Forms.Button btnSuaLop;
+        private System.Windows.Forms.Button btnXoaLop;
+        private System.Windows.Forms.Button btnLamMoiLop;
         private System.Windows.Forms.Label lblTimLop;
         private System.Windows.Forms.TextBox txtTimLop;
         private System.Windows.Forms.Button btnTimLop;
@@ -23,76 +38,220 @@ namespace QuanLySinhVien
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.lblMaID = new System.Windows.Forms.Label();
+            this.txtMaID = new System.Windows.Forms.TextBox();
+            this.lblMaLop = new System.Windows.Forms.Label();
+            this.txtMaLop = new System.Windows.Forms.TextBox();
+            this.lblTenLop = new System.Windows.Forms.Label();
+            this.txtTenLop = new System.Windows.Forms.TextBox();
+            this.lblGiaoVien = new System.Windows.Forms.Label();
+            this.txtGiaoVien = new System.Windows.Forms.TextBox();
+            this.lblGhiChu = new System.Windows.Forms.Label();
+            this.txtGhiChu = new System.Windows.Forms.TextBox();
+            this.btnThemLop = new System.Windows.Forms.Button();
+            this.btnSuaLop = new System.Windows.Forms.Button();
+            this.btnXoaLop = new System.Windows.Forms.Button();
+            this.btnLamMoiLop = new System.Windows.Forms.Button();
             this.lblTimLop = new System.Windows.Forms.Label();
             this.txtTimLop = new System.Windows.Forms.TextBox();
             this.btnTimLop = new System.Windows.Forms.Button();
             this.dataGridViewLopHoc = new System.Windows.Forms.DataGridView();
+            this.bindingSourceLopHoc = new System.Windows.Forms.BindingSource(this.components);
             this.lblClassPage = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lblMaSinhVien = new System.Windows.Forms.Label();
-            this.txtMaSinhVien = new System.Windows.Forms.TextBox();
-            this.lblHoTen = new System.Windows.Forms.Label();
-            this.txtHoTen = new System.Windows.Forms.TextBox();
-            this.lblGioiTinh = new System.Windows.Forms.Label();
-            this.lblNgaySinh = new System.Windows.Forms.Label();
-            this.btnXoaSV = new System.Windows.Forms.Button();
-            this.btnLamMoiSV = new System.Windows.Forms.Button();
-            this.btnSuaSV = new System.Windows.Forms.Button();
-            this.btnThemSV = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.quanlysinhvienDataSet = new QuanLySinhVien.quanlysinhvienDataSet();
-            this.quanlysinhvienDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.groupBoxThongTinLop = new System.Windows.Forms.GroupBox();
+            this.btnFirstPageLop = new System.Windows.Forms.Button();
+            this.btnPreviousPageLop = new System.Windows.Forms.Button();
+            this.btnNextPageLop = new System.Windows.Forms.Button();
+            this.btnLastPageLop = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLopHoc)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quanlysinhvienDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quanlysinhvienDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLopHoc)).BeginInit();
+            this.groupBoxThongTinLop.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
+            // lblMaID
+            //
+            this.lblMaID.AutoSize = true;
+            this.lblMaID.Location = new System.Drawing.Point(9, 30);
+            this.lblMaID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMaID.Name = "lblMaID";
+            this.lblMaID.Size = new System.Drawing.Size(46, 16);
+            this.lblMaID.TabIndex = 0;
+            this.lblMaID.Text = "Mã ID:";
+            //
+            // txtMaID
+            //
+            this.txtMaID.Location = new System.Drawing.Point(9, 45);
+            this.txtMaID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMaID.Name = "txtMaID";
+            this.txtMaID.ReadOnly = true;
+            this.txtMaID.Size = new System.Drawing.Size(241, 22);
+            this.txtMaID.TabIndex = 1;
+            this.txtMaID.TabStop = false;
+            //
+            // lblMaLop
+            //
+            this.lblMaLop.AutoSize = true;
+            this.lblMaLop.Location = new System.Drawing.Point(6, 83);
+            this.lblMaLop.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMaLop.Name = "lblMaLop";
+            this.lblMaLop.Size = new System.Drawing.Size(53, 16);
+            this.lblMaLop.TabIndex = 2;
+            this.lblMaLop.Text = "Mã lớp:";
+            //
+            // txtMaLop
+            //
+            this.txtMaLop.Location = new System.Drawing.Point(9, 103);
+            this.txtMaLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMaLop.Name = "txtMaLop";
+            this.txtMaLop.Size = new System.Drawing.Size(241, 22);
+            this.txtMaLop.TabIndex = 3;
+            //
+            // lblTenLop
+            //
+            this.lblTenLop.AutoSize = true;
+            this.lblTenLop.Location = new System.Drawing.Point(6, 137);
+            this.lblTenLop.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTenLop.Name = "lblTenLop";
+            this.lblTenLop.Size = new System.Drawing.Size(58, 16);
+            this.lblTenLop.TabIndex = 4;
+            this.lblTenLop.Text = "Tên lớp:";
+            //
+            // txtTenLop
+            //
+            this.txtTenLop.Location = new System.Drawing.Point(9, 157);
+            this.txtTenLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTenLop.Name = "txtTenLop";
+            this.txtTenLop.Size = new System.Drawing.Size(241, 22);
+            this.txtTenLop.TabIndex = 5;
+            //
+            // lblGiaoVien
+            //
+            this.lblGiaoVien.AutoSize = true;
+            this.lblGiaoVien.Location = new System.Drawing.Point(6, 191);
+            this.lblGiaoVien.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblGiaoVien.Name = "lblGiaoVien";
+            this.lblGiaoVien.Size = new System.Drawing.Size(68, 16);
+            this.lblGiaoVien.TabIndex = 6;
+            this.lblGiaoVien.Text = "Giáo viên:";
+            //
+            // txtGiaoVien
+            //
+            this.txtGiaoVien.Location = new System.Drawing.Point(9, 211);
+            this.txtGiaoVien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtGiaoVien.Name = "txtGiaoVien";
+            this.txtGiaoVien.Size = new System.Drawing.Size(241, 22);
+            this.txtGiaoVien.TabIndex = 7;
+            //
+            // lblGhiChu
+            //
+            this.lblGhiChu.AutoSize = true;
+            this.lblGhiChu.Location = new System.Drawing.Point(6, 245);
+            this.lblGhiChu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblGhiChu.Name = "lblGhiChu";
+            this.lblGhiChu.Size = new System.Drawing.Size(55, 16);
+            this.lblGhiChu.TabIndex = 8;
+            this.lblGhiChu.Text = "Ghi chú:";
+            //
+            // txtGhiChu
+            //
+            this.txtGhiChu.Location = new System.Drawing.Point(9, 265);
+            this.txtGhiChu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtGhiChu.Multiline = true;
+            this.txtGhiChu.Name = "txtGhiChu";
+            this.txtGhiChu.Size = new System.Drawing.Size(241, 37);
+            this.txtGhiChu.TabIndex = 9;
+            //
+            // btnThemLop
+            //
+            this.btnThemLop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.btnThemLop.ForeColor = System.Drawing.Color.White;
+            this.btnThemLop.Location = new System.Drawing.Point(6, 383);
+            this.btnThemLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThemLop.Name = "btnThemLop";
+            this.btnThemLop.Size = new System.Drawing.Size(124, 45);
+            this.btnThemLop.TabIndex = 10;
+            this.btnThemLop.Text = "Thêm";
+            this.btnThemLop.UseVisualStyleBackColor = false;
+            //
+            // btnSuaLop
+            //
+            this.btnSuaLop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.btnSuaLop.Enabled = false;
+            this.btnSuaLop.ForeColor = System.Drawing.Color.White;
+            this.btnSuaLop.Location = new System.Drawing.Point(144, 383);
+            this.btnSuaLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSuaLop.Name = "btnSuaLop";
+            this.btnSuaLop.Size = new System.Drawing.Size(134, 45);
+            this.btnSuaLop.TabIndex = 11;
+            this.btnSuaLop.Text = "Sửa";
+            this.btnSuaLop.UseVisualStyleBackColor = false;
+            //
+            // btnXoaLop
+            //
+            this.btnXoaLop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnXoaLop.Enabled = false;
+            this.btnXoaLop.ForeColor = System.Drawing.Color.White;
+            this.btnXoaLop.Location = new System.Drawing.Point(6, 447);
+            this.btnXoaLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnXoaLop.Name = "btnXoaLop";
+            this.btnXoaLop.Size = new System.Drawing.Size(124, 40);
+            this.btnXoaLop.TabIndex = 12;
+            this.btnXoaLop.Text = "Xóa";
+            this.btnXoaLop.UseVisualStyleBackColor = false;
+            //
+            // btnLamMoiLop
+            //
+            this.btnLamMoiLop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(165)))), ((int)(((byte)(166)))));
+            this.btnLamMoiLop.ForeColor = System.Drawing.Color.White;
+            this.btnLamMoiLop.Location = new System.Drawing.Point(144, 447);
+            this.btnLamMoiLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLamMoiLop.Name = "btnLamMoiLop";
+            this.btnLamMoiLop.Size = new System.Drawing.Size(134, 40);
+            this.btnLamMoiLop.TabIndex = 13;
+            this.btnLamMoiLop.Text = "Làm mới";
+            this.btnLamMoiLop.UseVisualStyleBackColor = false;
+            //
             // lblTimLop
-            // 
+            //
             this.lblTimLop.AutoSize = true;
-            this.lblTimLop.Location = new System.Drawing.Point(306, 58);
+            this.lblTimLop.Location = new System.Drawing.Point(306, 57);
             this.lblTimLop.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTimLop.Name = "lblTimLop";
             this.lblTimLop.Size = new System.Drawing.Size(127, 13);
-            this.lblTimLop.TabIndex = 12;
+            this.lblTimLop.TabIndex = 14;
             this.lblTimLop.Text = "Tìm kiếm (Tên / Mã Lớp):";
-            // 
+            //
             // txtTimLop
-            // 
-            this.txtTimLop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            //
+            this.txtTimLop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTimLop.Location = new System.Drawing.Point(309, 73);
+            this.txtTimLop.Location = new System.Drawing.Point(309, 72);
             this.txtTimLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTimLop.Name = "txtTimLop";
-            this.txtTimLop.Size = new System.Drawing.Size(311, 20);
-            this.txtTimLop.TabIndex = 13;
-            // 
+            this.txtTimLop.Size = new System.Drawing.Size(502, 20);
+            this.txtTimLop.TabIndex = 15;
+            //
             // btnTimLop
-            // 
+            //
             this.btnTimLop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTimLop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.btnTimLop.ForeColor = System.Drawing.Color.White;
-            this.btnTimLop.Location = new System.Drawing.Point(625, 67);
+            this.btnTimLop.Location = new System.Drawing.Point(816, 68);
             this.btnTimLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnTimLop.Name = "btnTimLop";
-            this.btnTimLop.Size = new System.Drawing.Size(116, 30);
-            this.btnTimLop.TabIndex = 14;
+            this.btnTimLop.Size = new System.Drawing.Size(105, 31);
+            this.btnTimLop.TabIndex = 16;
             this.btnTimLop.Text = "Tìm";
             this.btnTimLop.UseVisualStyleBackColor = false;
-            // 
+            //
             // dataGridViewLopHoc
-            // 
+            //
             this.dataGridViewLopHoc.AllowUserToAddRows = false;
             this.dataGridViewLopHoc.AllowUserToDeleteRows = false;
+            this.dataGridViewLopHoc.AutoGenerateColumns = false;
             this.dataGridViewLopHoc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewLopHoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewLopHoc.DataSource = this.bindingSourceLopHoc;
             this.dataGridViewLopHoc.Location = new System.Drawing.Point(309, 121);
             this.dataGridViewLopHoc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridViewLopHoc.MultiSelect = false;
@@ -100,272 +259,122 @@ namespace QuanLySinhVien
             this.dataGridViewLopHoc.ReadOnly = true;
             this.dataGridViewLopHoc.RowHeadersWidth = 51;
             this.dataGridViewLopHoc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewLopHoc.Size = new System.Drawing.Size(493, 353);
-            this.dataGridViewLopHoc.TabIndex = 15;
-            // 
+            this.dataGridViewLopHoc.Size = new System.Drawing.Size(616, 328);
+            this.dataGridViewLopHoc.TabIndex = 17;
+            //
             // lblClassPage
-            // 
+            //
             this.lblClassPage.AutoSize = true;
-            this.lblClassPage.Location = new System.Drawing.Point(503, 490);
+            this.lblClassPage.Location = new System.Drawing.Point(509, 467);
             this.lblClassPage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblClassPage.Name = "lblClassPage";
             this.lblClassPage.Size = new System.Drawing.Size(107, 13);
-            this.lblClassPage.TabIndex = 16;
+            this.lblClassPage.TabIndex = 18;
             this.lblClassPage.Text = "Trang 1/1 | 0 bản ghi";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.lblMaSinhVien);
-            this.groupBox2.Controls.Add(this.txtMaSinhVien);
-            this.groupBox2.Controls.Add(this.lblHoTen);
-            this.groupBox2.Controls.Add(this.txtHoTen);
-            this.groupBox2.Controls.Add(this.lblGioiTinh);
-            this.groupBox2.Controls.Add(this.lblNgaySinh);
-            this.groupBox2.Location = new System.Drawing.Point(3, 41);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(272, 292);
-            this.groupBox2.TabIndex = 24;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Thông tin lớp học";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(10, 232);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(241, 20);
-            this.textBox2.TabIndex = 8;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(8, 176);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(241, 20);
-            this.textBox1.TabIndex = 7;
-            // 
-            // lblMaSinhVien
-            // 
-            this.lblMaSinhVien.AutoSize = true;
-            this.lblMaSinhVien.Location = new System.Drawing.Point(8, 53);
-            this.lblMaSinhVien.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblMaSinhVien.Name = "lblMaSinhVien";
-            this.lblMaSinhVien.Size = new System.Drawing.Size(39, 13);
-            this.lblMaSinhVien.TabIndex = 0;
-            this.lblMaSinhVien.Text = "Mã ID:";
-            // 
-            // txtMaSinhVien
-            // 
-            this.txtMaSinhVien.Location = new System.Drawing.Point(10, 67);
-            this.txtMaSinhVien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtMaSinhVien.Name = "txtMaSinhVien";
-            this.txtMaSinhVien.Size = new System.Drawing.Size(241, 20);
-            this.txtMaSinhVien.TabIndex = 1;
-            // 
-            // lblHoTen
-            // 
-            this.lblHoTen.AutoSize = true;
-            this.lblHoTen.Location = new System.Drawing.Point(8, 108);
-            this.lblHoTen.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblHoTen.Name = "lblHoTen";
-            this.lblHoTen.Size = new System.Drawing.Size(42, 13);
-            this.lblHoTen.TabIndex = 2;
-            this.lblHoTen.Text = "Mã lớp:";
-            // 
-            // txtHoTen
-            // 
-            this.txtHoTen.Location = new System.Drawing.Point(9, 123);
-            this.txtHoTen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(241, 20);
-            this.txtHoTen.TabIndex = 3;
-            // 
-            // lblGioiTinh
-            // 
-            this.lblGioiTinh.AutoSize = true;
-            this.lblGioiTinh.Location = new System.Drawing.Point(5, 162);
-            this.lblGioiTinh.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblGioiTinh.Name = "lblGioiTinh";
-            this.lblGioiTinh.Size = new System.Drawing.Size(46, 13);
-            this.lblGioiTinh.TabIndex = 4;
-            this.lblGioiTinh.Text = "Tên lớp:";
-            // 
-            // lblNgaySinh
-            // 
-            this.lblNgaySinh.AutoSize = true;
-            this.lblNgaySinh.Location = new System.Drawing.Point(8, 217);
-            this.lblNgaySinh.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblNgaySinh.Name = "lblNgaySinh";
-            this.lblNgaySinh.Size = new System.Drawing.Size(47, 13);
-            this.lblNgaySinh.TabIndex = 6;
-            this.lblNgaySinh.Text = "Ghi chú:";
-            // 
-            // btnXoaSV
-            // 
-            this.btnXoaSV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.btnXoaSV.ForeColor = System.Drawing.Color.White;
-            this.btnXoaSV.Location = new System.Drawing.Point(3, 413);
-            this.btnXoaSV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnXoaSV.Name = "btnXoaSV";
-            this.btnXoaSV.Size = new System.Drawing.Size(124, 40);
-            this.btnXoaSV.TabIndex = 22;
-            this.btnXoaSV.Text = "Xóa";
-            this.btnXoaSV.UseVisualStyleBackColor = false;
-            // 
-            // btnLamMoiSV
-            // 
-            this.btnLamMoiSV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(165)))), ((int)(((byte)(166)))));
-            this.btnLamMoiSV.ForeColor = System.Drawing.Color.White;
-            this.btnLamMoiSV.Location = new System.Drawing.Point(141, 413);
-            this.btnLamMoiSV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnLamMoiSV.Name = "btnLamMoiSV";
-            this.btnLamMoiSV.Size = new System.Drawing.Size(134, 40);
-            this.btnLamMoiSV.TabIndex = 23;
-            this.btnLamMoiSV.Text = "Làm mới";
-            this.btnLamMoiSV.UseVisualStyleBackColor = false;
-            // 
-            // btnSuaSV
-            // 
-            this.btnSuaSV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
-            this.btnSuaSV.ForeColor = System.Drawing.Color.White;
-            this.btnSuaSV.Location = new System.Drawing.Point(141, 357);
-            this.btnSuaSV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnSuaSV.Name = "btnSuaSV";
-            this.btnSuaSV.Size = new System.Drawing.Size(134, 45);
-            this.btnSuaSV.TabIndex = 21;
-            this.btnSuaSV.Text = "Sửa";
-            this.btnSuaSV.UseVisualStyleBackColor = false;
-            // 
-            // btnThemSV
-            // 
-            this.btnThemSV.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnThemSV.ForeColor = System.Drawing.Color.White;
-            this.btnThemSV.Location = new System.Drawing.Point(3, 357);
-            this.btnThemSV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnThemSV.Name = "btnThemSV";
-            this.btnThemSV.Size = new System.Drawing.Size(124, 45);
-            this.btnThemSV.TabIndex = 20;
-            this.btnThemSV.Text = "Thêm";
-            this.btnThemSV.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(740, 483);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(64, 27);
-            this.button4.TabIndex = 28;
-            this.button4.Text = ">>";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(673, 483);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(64, 27);
-            this.button3.TabIndex = 27;
-            this.button3.Text = ">";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(378, 483);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(64, 27);
-            this.button2.TabIndex = 26;
-            this.button2.Text = "<";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(309, 483);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(64, 27);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "<<";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(3, 465);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(272, 45);
-            this.button5.TabIndex = 29;
-            this.button5.Text = "Xem danh sách sinh viên";
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // quanlysinhvienDataSet
-            // 
-            this.quanlysinhvienDataSet.DataSetName = "quanlysinhvienDataSet";
-            this.quanlysinhvienDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // quanlysinhvienDataSetBindingSource
-            // 
-            this.quanlysinhvienDataSetBindingSource.DataSource = this.quanlysinhvienDataSet;
-            this.quanlysinhvienDataSetBindingSource.Position = 0;
-            // 
+            //
+            // groupBoxThongTinLop
+            //
+            this.groupBoxThongTinLop.Controls.Add(this.lblMaID);
+            this.groupBoxThongTinLop.Controls.Add(this.txtMaID);
+            this.groupBoxThongTinLop.Controls.Add(this.lblMaLop);
+            this.groupBoxThongTinLop.Controls.Add(this.txtMaLop);
+            this.groupBoxThongTinLop.Controls.Add(this.lblTenLop);
+            this.groupBoxThongTinLop.Controls.Add(this.txtTenLop);
+            this.groupBoxThongTinLop.Controls.Add(this.lblGiaoVien);
+            this.groupBoxThongTinLop.Controls.Add(this.txtGiaoVien);
+            this.groupBoxThongTinLop.Controls.Add(this.lblGhiChu);
+            this.groupBoxThongTinLop.Controls.Add(this.txtGhiChu);
+            this.groupBoxThongTinLop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.groupBoxThongTinLop.Location = new System.Drawing.Point(6, 38);
+            this.groupBoxThongTinLop.Name = "groupBoxThongTinLop";
+            this.groupBoxThongTinLop.Size = new System.Drawing.Size(272, 313);
+            this.groupBoxThongTinLop.TabIndex = 19;
+            this.groupBoxThongTinLop.TabStop = false;
+            this.groupBoxThongTinLop.Text = "Thông tin lớp học";
+            //
+            // btnFirstPageLop
+            //
+            this.btnFirstPageLop.Enabled = false;
+            this.btnFirstPageLop.Location = new System.Drawing.Point(309, 462);
+            this.btnFirstPageLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFirstPageLop.Name = "btnFirstPageLop";
+            this.btnFirstPageLop.Size = new System.Drawing.Size(64, 25);
+            this.btnFirstPageLop.TabIndex = 20;
+            this.btnFirstPageLop.Text = "<<";
+            this.btnFirstPageLop.UseVisualStyleBackColor = true;
+            //
+            // btnPreviousPageLop
+            //
+            this.btnPreviousPageLop.Enabled = false;
+            this.btnPreviousPageLop.Location = new System.Drawing.Point(378, 462);
+            this.btnPreviousPageLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPreviousPageLop.Name = "btnPreviousPageLop";
+            this.btnPreviousPageLop.Size = new System.Drawing.Size(64, 25);
+            this.btnPreviousPageLop.TabIndex = 21;
+            this.btnPreviousPageLop.Text = "<";
+            this.btnPreviousPageLop.UseVisualStyleBackColor = true;
+            //
+            // btnNextPageLop
+            //
+            this.btnNextPageLop.Enabled = false;
+            this.btnNextPageLop.Location = new System.Drawing.Point(694, 467);
+            this.btnNextPageLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNextPageLop.Name = "btnNextPageLop";
+            this.btnNextPageLop.Size = new System.Drawing.Size(64, 22);
+            this.btnNextPageLop.TabIndex = 22;
+            this.btnNextPageLop.Text = ">";
+            this.btnNextPageLop.UseVisualStyleBackColor = true;
+            //
+            // btnLastPageLop
+            //
+            this.btnLastPageLop.Enabled = false;
+            this.btnLastPageLop.Location = new System.Drawing.Point(764, 467);
+            this.btnLastPageLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLastPageLop.Name = "btnLastPageLop";
+            this.btnLastPageLop.Size = new System.Drawing.Size(64, 24);
+            this.btnLastPageLop.TabIndex = 23;
+            this.btnLastPageLop.Text = ">>";
+            this.btnLastPageLop.UseVisualStyleBackColor = true;
+            //
             // uc_QLLH
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.btnXoaSV);
-            this.Controls.Add(this.btnLamMoiSV);
-            this.Controls.Add(this.btnSuaSV);
-            this.Controls.Add(this.btnThemSV);
+            this.Controls.Add(this.btnLastPageLop);
+            this.Controls.Add(this.btnNextPageLop);
+            this.Controls.Add(this.btnPreviousPageLop);
+            this.Controls.Add(this.btnFirstPageLop);
+            this.Controls.Add(this.groupBoxThongTinLop);
             this.Controls.Add(this.lblTimLop);
             this.Controls.Add(this.txtTimLop);
             this.Controls.Add(this.btnTimLop);
             this.Controls.Add(this.dataGridViewLopHoc);
             this.Controls.Add(this.lblClassPage);
+            this.Controls.Add(this.btnXoaLop);
+            this.Controls.Add(this.btnLamMoiLop);
+            this.Controls.Add(this.btnSuaLop);
+            this.Controls.Add(this.btnThemLop);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "uc_QLLH";
-            this.Size = new System.Drawing.Size(835, 621);
+            this.Size = new System.Drawing.Size(1054, 618);
             this.Load += new System.EventHandler(this.uc_QLLH_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLopHoc)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quanlysinhvienDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quanlysinhvienDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLopHoc)).EndInit();
+            this.groupBoxThongTinLop.ResumeLayout(false);
+            this.groupBoxThongTinLop.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label lblMaSinhVien;
-        private System.Windows.Forms.TextBox txtMaSinhVien;
-        private System.Windows.Forms.Label lblHoTen;
-        private System.Windows.Forms.TextBox txtHoTen;
-        private System.Windows.Forms.Label lblGioiTinh;
-        private System.Windows.Forms.Label lblNgaySinh;
-        private System.Windows.Forms.Button btnXoaSV;
-        private System.Windows.Forms.Button btnLamMoiSV;
-        private System.Windows.Forms.Button btnSuaSV;
-        private System.Windows.Forms.Button btnThemSV;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.BindingSource quanlysinhvienDataSetBindingSource;
-        private quanlysinhvienDataSet quanlysinhvienDataSet;
+
+        private System.Windows.Forms.GroupBox groupBoxThongTinLop;
+        private System.Windows.Forms.BindingSource bindingSourceLopHoc;
+        private System.Windows.Forms.Button btnFirstPageLop;
+        private System.Windows.Forms.Button btnPreviousPageLop;
+        private System.Windows.Forms.Button btnNextPageLop;
+        private System.Windows.Forms.Button btnLastPageLop;
     }
 }

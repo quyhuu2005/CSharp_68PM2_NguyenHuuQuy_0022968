@@ -29,6 +29,7 @@ namespace QuanLySinhVien
         private System.Windows.Forms.Button btnSuaLop;
         private System.Windows.Forms.Button btnXoaLop;
         private System.Windows.Forms.Button btnLamMoiLop;
+        private System.Windows.Forms.Button btnXemSinhVienLop;
         private System.Windows.Forms.Label lblTimLop;
         private System.Windows.Forms.TextBox txtTimLop;
         private System.Windows.Forms.Button btnTimLop;
@@ -52,6 +53,7 @@ namespace QuanLySinhVien
             this.btnSuaLop = new System.Windows.Forms.Button();
             this.btnXoaLop = new System.Windows.Forms.Button();
             this.btnLamMoiLop = new System.Windows.Forms.Button();
+            this.btnXemSinhVienLop = new System.Windows.Forms.Button();
             this.lblTimLop = new System.Windows.Forms.Label();
             this.txtTimLop = new System.Windows.Forms.TextBox();
             this.btnTimLop = new System.Windows.Forms.Button();
@@ -74,14 +76,14 @@ namespace QuanLySinhVien
             this.lblMaID.Location = new System.Drawing.Point(9, 30);
             this.lblMaID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMaID.Name = "lblMaID";
-            this.lblMaID.Size = new System.Drawing.Size(46, 16);
+            this.lblMaID.Size = new System.Drawing.Size(45, 16);
             this.lblMaID.TabIndex = 0;
             this.lblMaID.Text = "Mã ID:";
             //
             // txtMaID
             //
             this.txtMaID.Location = new System.Drawing.Point(9, 45);
-            this.txtMaID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMaID.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaID.Name = "txtMaID";
             this.txtMaID.ReadOnly = true;
             this.txtMaID.Size = new System.Drawing.Size(241, 22);
@@ -94,14 +96,14 @@ namespace QuanLySinhVien
             this.lblMaLop.Location = new System.Drawing.Point(6, 83);
             this.lblMaLop.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMaLop.Name = "lblMaLop";
-            this.lblMaLop.Size = new System.Drawing.Size(53, 16);
+            this.lblMaLop.Size = new System.Drawing.Size(51, 16);
             this.lblMaLop.TabIndex = 2;
             this.lblMaLop.Text = "Mã lớp:";
             //
             // txtMaLop
             //
             this.txtMaLop.Location = new System.Drawing.Point(9, 103);
-            this.txtMaLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMaLop.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaLop.Name = "txtMaLop";
             this.txtMaLop.Size = new System.Drawing.Size(241, 22);
             this.txtMaLop.TabIndex = 3;
@@ -112,14 +114,14 @@ namespace QuanLySinhVien
             this.lblTenLop.Location = new System.Drawing.Point(6, 137);
             this.lblTenLop.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTenLop.Name = "lblTenLop";
-            this.lblTenLop.Size = new System.Drawing.Size(58, 16);
+            this.lblTenLop.Size = new System.Drawing.Size(56, 16);
             this.lblTenLop.TabIndex = 4;
             this.lblTenLop.Text = "Tên lớp:";
             //
             // txtTenLop
             //
             this.txtTenLop.Location = new System.Drawing.Point(9, 157);
-            this.txtTenLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTenLop.Margin = new System.Windows.Forms.Padding(2);
             this.txtTenLop.Name = "txtTenLop";
             this.txtTenLop.Size = new System.Drawing.Size(241, 22);
             this.txtTenLop.TabIndex = 5;
@@ -130,14 +132,14 @@ namespace QuanLySinhVien
             this.lblGiaoVien.Location = new System.Drawing.Point(6, 191);
             this.lblGiaoVien.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblGiaoVien.Name = "lblGiaoVien";
-            this.lblGiaoVien.Size = new System.Drawing.Size(68, 16);
+            this.lblGiaoVien.Size = new System.Drawing.Size(67, 16);
             this.lblGiaoVien.TabIndex = 6;
             this.lblGiaoVien.Text = "Giáo viên:";
             //
             // txtGiaoVien
             //
             this.txtGiaoVien.Location = new System.Drawing.Point(9, 211);
-            this.txtGiaoVien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtGiaoVien.Margin = new System.Windows.Forms.Padding(2);
             this.txtGiaoVien.Name = "txtGiaoVien";
             this.txtGiaoVien.Size = new System.Drawing.Size(241, 22);
             this.txtGiaoVien.TabIndex = 7;
@@ -148,14 +150,14 @@ namespace QuanLySinhVien
             this.lblGhiChu.Location = new System.Drawing.Point(6, 245);
             this.lblGhiChu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblGhiChu.Name = "lblGhiChu";
-            this.lblGhiChu.Size = new System.Drawing.Size(55, 16);
+            this.lblGhiChu.Size = new System.Drawing.Size(54, 16);
             this.lblGhiChu.TabIndex = 8;
             this.lblGhiChu.Text = "Ghi chú:";
             //
             // txtGhiChu
             //
             this.txtGhiChu.Location = new System.Drawing.Point(9, 265);
-            this.txtGhiChu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtGhiChu.Margin = new System.Windows.Forms.Padding(2);
             this.txtGhiChu.Multiline = true;
             this.txtGhiChu.Name = "txtGhiChu";
             this.txtGhiChu.Size = new System.Drawing.Size(241, 37);
@@ -166,7 +168,7 @@ namespace QuanLySinhVien
             this.btnThemLop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.btnThemLop.ForeColor = System.Drawing.Color.White;
             this.btnThemLop.Location = new System.Drawing.Point(6, 383);
-            this.btnThemLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThemLop.Margin = new System.Windows.Forms.Padding(2);
             this.btnThemLop.Name = "btnThemLop";
             this.btnThemLop.Size = new System.Drawing.Size(124, 45);
             this.btnThemLop.TabIndex = 10;
@@ -179,7 +181,7 @@ namespace QuanLySinhVien
             this.btnSuaLop.Enabled = false;
             this.btnSuaLop.ForeColor = System.Drawing.Color.White;
             this.btnSuaLop.Location = new System.Drawing.Point(144, 383);
-            this.btnSuaLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSuaLop.Margin = new System.Windows.Forms.Padding(2);
             this.btnSuaLop.Name = "btnSuaLop";
             this.btnSuaLop.Size = new System.Drawing.Size(134, 45);
             this.btnSuaLop.TabIndex = 11;
@@ -192,7 +194,7 @@ namespace QuanLySinhVien
             this.btnXoaLop.Enabled = false;
             this.btnXoaLop.ForeColor = System.Drawing.Color.White;
             this.btnXoaLop.Location = new System.Drawing.Point(6, 447);
-            this.btnXoaLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnXoaLop.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoaLop.Name = "btnXoaLop";
             this.btnXoaLop.Size = new System.Drawing.Size(124, 40);
             this.btnXoaLop.TabIndex = 12;
@@ -204,12 +206,25 @@ namespace QuanLySinhVien
             this.btnLamMoiLop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(165)))), ((int)(((byte)(166)))));
             this.btnLamMoiLop.ForeColor = System.Drawing.Color.White;
             this.btnLamMoiLop.Location = new System.Drawing.Point(144, 447);
-            this.btnLamMoiLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLamMoiLop.Margin = new System.Windows.Forms.Padding(2);
             this.btnLamMoiLop.Name = "btnLamMoiLop";
             this.btnLamMoiLop.Size = new System.Drawing.Size(134, 40);
             this.btnLamMoiLop.TabIndex = 13;
             this.btnLamMoiLop.Text = "Làm mới";
             this.btnLamMoiLop.UseVisualStyleBackColor = false;
+            //
+            // btnXemSinhVienLop
+            //
+            this.btnXemSinhVienLop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnXemSinhVienLop.Enabled = false;
+            this.btnXemSinhVienLop.ForeColor = System.Drawing.Color.White;
+            this.btnXemSinhVienLop.Location = new System.Drawing.Point(6, 491);
+            this.btnXemSinhVienLop.Margin = new System.Windows.Forms.Padding(2);
+            this.btnXemSinhVienLop.Name = "btnXemSinhVienLop";
+            this.btnXemSinhVienLop.Size = new System.Drawing.Size(272, 40);
+            this.btnXemSinhVienLop.TabIndex = 24;
+            this.btnXemSinhVienLop.Text = "Xem danh sách sinh viên";
+            this.btnXemSinhVienLop.UseVisualStyleBackColor = false;
             //
             // lblTimLop
             //
@@ -226,7 +241,7 @@ namespace QuanLySinhVien
             this.txtTimLop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTimLop.Location = new System.Drawing.Point(309, 72);
-            this.txtTimLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTimLop.Margin = new System.Windows.Forms.Padding(2);
             this.txtTimLop.Name = "txtTimLop";
             this.txtTimLop.Size = new System.Drawing.Size(502, 20);
             this.txtTimLop.TabIndex = 15;
@@ -237,7 +252,7 @@ namespace QuanLySinhVien
             this.btnTimLop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.btnTimLop.ForeColor = System.Drawing.Color.White;
             this.btnTimLop.Location = new System.Drawing.Point(816, 68);
-            this.btnTimLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTimLop.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimLop.Name = "btnTimLop";
             this.btnTimLop.Size = new System.Drawing.Size(105, 31);
             this.btnTimLop.TabIndex = 16;
@@ -253,7 +268,7 @@ namespace QuanLySinhVien
             this.dataGridViewLopHoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewLopHoc.DataSource = this.bindingSourceLopHoc;
             this.dataGridViewLopHoc.Location = new System.Drawing.Point(309, 121);
-            this.dataGridViewLopHoc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewLopHoc.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewLopHoc.MultiSelect = false;
             this.dataGridViewLopHoc.Name = "dataGridViewLopHoc";
             this.dataGridViewLopHoc.ReadOnly = true;
@@ -296,7 +311,7 @@ namespace QuanLySinhVien
             //
             this.btnFirstPageLop.Enabled = false;
             this.btnFirstPageLop.Location = new System.Drawing.Point(309, 462);
-            this.btnFirstPageLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFirstPageLop.Margin = new System.Windows.Forms.Padding(2);
             this.btnFirstPageLop.Name = "btnFirstPageLop";
             this.btnFirstPageLop.Size = new System.Drawing.Size(64, 25);
             this.btnFirstPageLop.TabIndex = 20;
@@ -307,7 +322,7 @@ namespace QuanLySinhVien
             //
             this.btnPreviousPageLop.Enabled = false;
             this.btnPreviousPageLop.Location = new System.Drawing.Point(378, 462);
-            this.btnPreviousPageLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPreviousPageLop.Margin = new System.Windows.Forms.Padding(2);
             this.btnPreviousPageLop.Name = "btnPreviousPageLop";
             this.btnPreviousPageLop.Size = new System.Drawing.Size(64, 25);
             this.btnPreviousPageLop.TabIndex = 21;
@@ -318,7 +333,7 @@ namespace QuanLySinhVien
             //
             this.btnNextPageLop.Enabled = false;
             this.btnNextPageLop.Location = new System.Drawing.Point(694, 467);
-            this.btnNextPageLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNextPageLop.Margin = new System.Windows.Forms.Padding(2);
             this.btnNextPageLop.Name = "btnNextPageLop";
             this.btnNextPageLop.Size = new System.Drawing.Size(64, 22);
             this.btnNextPageLop.TabIndex = 22;
@@ -329,7 +344,7 @@ namespace QuanLySinhVien
             //
             this.btnLastPageLop.Enabled = false;
             this.btnLastPageLop.Location = new System.Drawing.Point(764, 467);
-            this.btnLastPageLop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLastPageLop.Margin = new System.Windows.Forms.Padding(2);
             this.btnLastPageLop.Name = "btnLastPageLop";
             this.btnLastPageLop.Size = new System.Drawing.Size(64, 24);
             this.btnLastPageLop.TabIndex = 23;
@@ -341,6 +356,7 @@ namespace QuanLySinhVien
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.btnXemSinhVienLop);
             this.Controls.Add(this.btnLastPageLop);
             this.Controls.Add(this.btnNextPageLop);
             this.Controls.Add(this.btnPreviousPageLop);
@@ -355,7 +371,7 @@ namespace QuanLySinhVien
             this.Controls.Add(this.btnLamMoiLop);
             this.Controls.Add(this.btnSuaLop);
             this.Controls.Add(this.btnThemLop);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "uc_QLLH";
             this.Size = new System.Drawing.Size(1054, 618);
             this.Load += new System.EventHandler(this.uc_QLLH_Load);

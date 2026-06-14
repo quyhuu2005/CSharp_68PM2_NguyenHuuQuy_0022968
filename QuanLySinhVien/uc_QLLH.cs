@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -22,6 +23,7 @@ namespace QuanLySinhVien
             btnSuaLop.Click += btnSuaLop_Click;
             btnXoaLop.Click += btnXoaLop_Click;
             btnLamMoiLop.Click += btnLamMoiLop_Click;
+            btnXemSinhVienLop.Click += btnXemSinhVienLop_Click;
             btnTimLop.Click += btnTimLop_Click;
             btnFirstPageLop.Click += btnFirstPageLop_Click;
             btnPreviousPageLop.Click += btnPreviousPageLop_Click;
@@ -203,6 +205,7 @@ namespace QuanLySinhVien
             txtMaLop.Enabled = true;
             btnSuaLop.Enabled = false;
             btnXoaLop.Enabled = false;
+            btnXemSinhVienLop.Enabled = false;
             maLopDangChon = null;
             dataGridViewLopHoc.ClearSelection();
         }
@@ -419,6 +422,103 @@ namespace QuanLySinhVien
             txtMaLop.Enabled = false;
             btnSuaLop.Enabled = true;
             btnXoaLop.Enabled = true;
+            btnXemSinhVienLop.Enabled = true;
+        }
+
+        private void btnXemSinhVienLop_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(maLopDangChon))
+            {
+                MessageBox.Show("Vui long chon lop hoc can xem danh sach sinh vien.", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                List<SinhVien> danhSachSinhVien;
+                using (DataClasses1DataContext db = TaoKetNoi())
+                {
+                    danhSachSinhVien = db.SinhViens
+                        .Where(sv => sv.Lop == maLopDangChon)
+                        .OrderBy(sv => sv.MaSV)
+                        .ToList();
+                }
+
+                HienThiDanhSachSinhVien(danhSachSinhVien);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi tai danh sach sinh vien: " + ex.Message, "Loi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void HienThiDanhSachSinhVien(List<SinhVien> danhSachSinhVien)
+        {
+            using (Form formDanhSach = new Form())
+            {
+                Label lblTieuDe = new Label
+                {
+                    Dock = DockStyle.Top,
+                    Height = 36,
+                    Padding = new Padding(10, 0, 0, 0),
+                    TextAlign = ContentAlignment.MiddleLeft,
+                    Text = $"Lop {maLopDangChon} - {danhSachSinhVien.Count} sinh vien"
+                };
+
+                DataGridView dgvSinhVien = new DataGridView
+                {
+                    AllowUserToAddRows = false,
+                    AllowUserToDeleteRows = false,
+                    AutoGenerateColumns = false,
+                    AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
+                    ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize,
+                    Dock = DockStyle.Fill,
+                    MultiSelect = false,
+                    ReadOnly = true,
+                    SelectionMode = DataGridViewSelectionMode.FullRowSelect
+                };
+
+                dgvSinhVien.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "MaSV",
+                    HeaderText = "Ma SV",
+                    Name = "colMaSV"
+                });
+                dgvSinhVien.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "HoTen",
+                    HeaderText = "Ho ten",
+                    Name = "colHoTen"
+                });
+                dgvSinhVien.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "GioiTinh",
+                    HeaderText = "Gioi tinh",
+                    Name = "colGioiTinh"
+                });
+                dgvSinhVien.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "NgaySinh",
+                    HeaderText = "Ngay sinh",
+                    Name = "colNgaySinh",
+                    DefaultCellStyle = { Format = "dd/MM/yyyy" }
+                });
+                dgvSinhVien.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "Lop",
+                    HeaderText = "Lop",
+                    Name = "colLop"
+                });
+                dgvSinhVien.DataSource = danhSachSinhVien;
+
+                formDanhSach.Text = "Danh sach sinh vien";
+                formDanhSach.StartPosition = FormStartPosition.CenterParent;
+                formDanhSach.Size = new Size(760, 420);
+                formDanhSach.MinimizeBox = false;
+                formDanhSach.Controls.Add(dgvSinhVien);
+                formDanhSach.Controls.Add(lblTieuDe);
+                formDanhSach.ShowDialog(this);
+            }
         }
 
         private void dataGridViewLopHoc_CellClick(object sender, DataGridViewCellEventArgs e)

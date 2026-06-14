@@ -16,6 +16,7 @@ namespace QuanLySinhVien
             CauHinhBangSinhVien();
             dgv_qlsv.CellClick += dgv_qlsv_CellClick;
             btnSuaSV.Click += btnSuaSV_Click;
+            btnXoaSV.Click += btnXoaSV_Click;
         }
 
         private DataClasses1DataContext TaoKetNoi()
@@ -25,10 +26,12 @@ namespace QuanLySinhVien
 
         private void uc_QLSV_Load(object sender, EventArgs e)
         {
+            
             LoadDanhSachLop();
             LoadDanhSachSinhVien();
             XoaTrangForm();
         }
+
 
         private void CauHinhBangSinhVien()
         {
@@ -189,6 +192,7 @@ namespace QuanLySinhVien
             dtpNgaySinh.Value = DateTime.Today;
             txtMaSinhVien.Enabled = true;
             btnSuaSV.Enabled = false;
+            btnXoaSV.Enabled = false;
             maSinhVienDangChon = null;
             txtMaSinhVien.Focus();
             dgv_qlsv.ClearSelection();
@@ -301,6 +305,52 @@ namespace QuanLySinhVien
             }
         }
 
+        private void btnXoaSV_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(maSinhVienDangChon))
+            {
+                MessageBox.Show("Vui long chon sinh vien can xoa.", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult xacNhan = MessageBox.Show(
+                $"Ban co chac muon xoa sinh vien {txtHoTen.Text.Trim()} ({maSinhVienDangChon})?",
+                "Xac nhan xoa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (xacNhan != DialogResult.Yes)
+            {
+                return;
+            }
+
+            try
+            {
+                using (DataClasses1DataContext db = TaoKetNoi())
+                {
+                    SinhVien sinhVien = db.SinhViens.SingleOrDefault(sv => sv.MaSV == maSinhVienDangChon);
+                    if (sinhVien == null)
+                    {
+                        MessageBox.Show("Khong tim thay sinh vien can xoa.", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        LoadDanhSachSinhVien();
+                        XoaTrangForm();
+                        return;
+                    }
+
+                    db.SinhViens.DeleteOnSubmit(sinhVien);
+                    db.SubmitChanges();
+                }
+
+                LoadDanhSachSinhVien();
+                XoaTrangForm();
+                MessageBox.Show("Xoa sinh vien thanh cong.", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Loi xoa sinh vien: " + ex.Message, "Loi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void HienThiSinhVienLenForm(SinhVien sinhVien)
         {
             if (sinhVien == null)
@@ -316,6 +366,7 @@ namespace QuanLySinhVien
             dtpNgaySinh.Value = sinhVien.NgaySinh ?? DateTime.Today;
             txtMaSinhVien.Enabled = false;
             btnSuaSV.Enabled = true;
+            btnXoaSV.Enabled = true;
         }
 
         private void ChonGiaTriComboBox(ComboBox comboBox, string giaTri)

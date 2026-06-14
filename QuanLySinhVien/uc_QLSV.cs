@@ -7,7 +7,10 @@ namespace QuanLySinhVien
 {
     public partial class uc_QLSV : UserControl
     {
+        private const int SoDongMoiTrang = 10;
         private List<SinhVien> danhSachSinhVien = new List<SinhVien>();
+        private List<SinhVien> danhSachDangHienThi = new List<SinhVien>();
+        private int trangHienTai = 1;
         private string maSinhVienDangChon;
 
         public uc_QLSV()
@@ -17,6 +20,12 @@ namespace QuanLySinhVien
             dgv_qlsv.CellClick += dgv_qlsv_CellClick;
             btnSuaSV.Click += btnSuaSV_Click;
             btnXoaSV.Click += btnXoaSV_Click;
+            btnLamMoiSV.Click += btnLamMoiSV_Click;
+            btnFirstPageSV.Click += btnFirstPageSV_Click;
+            btnPreviousPageSV.Click += btnPreviousPageSV_Click;
+            btnNextPageSV.Click += btnNextPageSV_Click;
+            btnLastPageSV.Click += btnLastPageSV_Click;
+            txtTimSV.KeyDown += txtTimSV_KeyDown;
         }
 
         private DataClasses1DataContext TaoKetNoi()
@@ -110,21 +119,67 @@ namespace QuanLySinhVien
                         .ToList();
                 }
 
-                BindDanhSach(danhSachSinhVien);
+                BindDanhSach(danhSachSinhVien, true);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Loi tai du lieu: " + ex.Message, "Loi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                BindDanhSach(new List<SinhVien>());
+                BindDanhSach(new List<SinhVien>(), true);
             }
         }
 
-        private void BindDanhSach(List<SinhVien> danhSach)
+        private void BindDanhSach(List<SinhVien> danhSach, bool veTrangDau)
         {
+            danhSachDangHienThi = danhSach ?? new List<SinhVien>();
+            if (veTrangDau)
+            {
+                trangHienTai = 1;
+            }
+
+            CapNhatTrangSinhVien();
+        }
+
+        private int LayTongTrangSinhVien()
+        {
+            return Math.Max(1, (int)Math.Ceiling(danhSachDangHienThi.Count / (double)SoDongMoiTrang));
+        }
+
+        private void CapNhatTrangSinhVien()
+        {
+            int tongTrang = LayTongTrangSinhVien();
+            if (trangHienTai < 1)
+            {
+                trangHienTai = 1;
+            }
+
+            if (trangHienTai > tongTrang)
+            {
+                trangHienTai = tongTrang;
+            }
+
+            List<SinhVien> duLieuTrang = danhSachDangHienThi
+                .Skip((trangHienTai - 1) * SoDongMoiTrang)
+                .Take(SoDongMoiTrang)
+                .ToList();
+
             bindingSource2.DataMember = string.Empty;
-            bindingSource2.DataSource = danhSach;
+            bindingSource2.DataSource = duLieuTrang;
             dgv_qlsv.DataSource = bindingSource2;
-            lblStudentPage.Text = $"Trang 1/1 | {bindingSource2.Count} ban ghi";
+            lblStudentPage.Text = $"Trang {trangHienTai}/{tongTrang} | {danhSachDangHienThi.Count} ban ghi";
+
+            bool coTrangTruoc = trangHienTai > 1;
+            bool coTrangSau = trangHienTai < tongTrang;
+            btnFirstPageSV.Enabled = coTrangTruoc;
+            btnPreviousPageSV.Enabled = coTrangTruoc;
+            btnNextPageSV.Enabled = coTrangSau;
+            btnLastPageSV.Enabled = coTrangSau;
+            XoaThongTinSinhVienDangChon();
+        }
+
+        private void ChuyenTrangSinhVien(int trangMoi)
+        {
+            trangHienTai = trangMoi;
+            CapNhatTrangSinhVien();
         }
 
         private bool KiemTraDuLieuNhap()
@@ -175,9 +230,15 @@ namespace QuanLySinhVien
 
         private void XoaTrangForm()
         {
+            XoaThongTinSinhVienDangChon();
+            txtTimSV.Clear();
+            txtMaSinhVien.Focus();
+        }
+
+        private void XoaThongTinSinhVienDangChon()
+        {
             txtMaSinhVien.Clear();
             txtHoTen.Clear();
-            txtTimSV.Clear();
 
             if (cmbGioiTinh.Items.Count > 0)
             {
@@ -194,7 +255,6 @@ namespace QuanLySinhVien
             btnSuaSV.Enabled = false;
             btnXoaSV.Enabled = false;
             maSinhVienDangChon = null;
-            txtMaSinhVien.Focus();
             dgv_qlsv.ClearSelection();
         }
 
@@ -247,18 +307,55 @@ namespace QuanLySinhVien
                 {
                     List<SinhVien> ketQua = db.SinhViens
                         .Where(sv =>
-                            sv.MaSV.Contains(tuKhoa) ||
-                            sv.HoTen.Contains(tuKhoa) ||
+                            (sv.MaSV != null && sv.MaSV.Contains(tuKhoa)) ||
+                            (sv.HoTen != null && sv.HoTen.Contains(tuKhoa)) ||
                             (sv.Lop != null && sv.Lop.Contains(tuKhoa)))
                         .OrderBy(sv => sv.MaSV)
                         .ToList();
 
-                    BindDanhSach(ketQua);
+                    BindDanhSach(ketQua, true);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Loi tim kiem sinh vien: " + ex.Message, "Loi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnLamMoiSV_Click(object sender, EventArgs e)
+        {
+            txtTimSV.Clear();
+            LoadDanhSachLop();
+            LoadDanhSachSinhVien();
+            XoaTrangForm();
+        }
+
+        private void btnFirstPageSV_Click(object sender, EventArgs e)
+        {
+            ChuyenTrangSinhVien(1);
+        }
+
+        private void btnPreviousPageSV_Click(object sender, EventArgs e)
+        {
+            ChuyenTrangSinhVien(trangHienTai - 1);
+        }
+
+        private void btnNextPageSV_Click(object sender, EventArgs e)
+        {
+            ChuyenTrangSinhVien(trangHienTai + 1);
+        }
+
+        private void btnLastPageSV_Click(object sender, EventArgs e)
+        {
+            ChuyenTrangSinhVien(LayTongTrangSinhVien());
+        }
+
+        private void txtTimSV_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                btnTimSV_Click(sender, EventArgs.Empty);
             }
         }
 
@@ -387,6 +484,11 @@ namespace QuanLySinhVien
         }
 
         private void dgv_qlsv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
 
         }
